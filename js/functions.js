@@ -70,7 +70,7 @@ var random = Math.floor((Math.random() * 3) + 1);
 function isTwo(x) {
     return x === 2
 }
-
+console.log("The random number is : " + random)
 console.log(isTwo(random))
 
 
