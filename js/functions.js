@@ -9,9 +9,9 @@
  * > sayHello("codeup") // returns "Hello, codeup!"
  */
 
-function sayHello(input) {
+function sayHello(name) {
 
-    var output = "Hello, " + input + "!";
+    var output = "Hello, " + name + "!";
 
     return output
 }
@@ -27,7 +27,7 @@ function sayHello(input) {
  * console.log 'helloMessage' to check your work
  */
 
-var helloMessage = sayHello("juan")
+var helloMessage = sayHello("Juan")
 
 console.log(helloMessage)
 
@@ -102,6 +102,7 @@ var billTotal = prompt("What was the amount of the bill")
 var tip = prompt("How much would you like to tip? (.10-.50) percent")
 calculateTip(billTotal, tip)
 alert("The total tip will be: $" + calculateTip(billTotal, tip).toFixed(2))
+console.log("your calculated tip was: $" + calculateTip( billTotal, tip).toFixed(2))
 
 /**
  * TODO:
@@ -123,3 +124,4 @@ function applyDiscount(originalPrice, discountP) {
     return (originalPrice - (originalPrice * discountP))
 }
 alert("your total will come out too: $" + applyDiscount(originalPrice, discountP).toFixed(2))
+console.log("Your total will come out to: $" + applyDiscount(originalPrice, discountP).toFixed(2))
