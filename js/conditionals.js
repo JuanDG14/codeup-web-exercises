@@ -183,16 +183,18 @@ var userP = confirm("would you like to enter a number?");
  }
 
  function plus100 (numberI) {
-     return "your number plus 100 equals to " + (parseFloat(userN) + 100)
+     return "your number plus 100 equals to " + (parseFloat(numberI) + 100)
  }
 
  if (userP) {
      numberI = prompt("please enter your number")
      if (isNaN(numberI)) {
-         alert("okay you dont have to do that");
+         alert("that is not a number bro");
      } else {
          alert(oddEven(numberI));
          alert(negativePositive(numberI));
          alert(plus100(numberI));
      }
+ } else {
+     alert("okay you dont have to do that");
  }
