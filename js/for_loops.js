@@ -37,7 +37,8 @@
 // var random, evenOddString;
 // for (var unit = 1; unit <= 10; unit++) {
 //     random = randomInterval(20, 200);
-//     evenOddString = (random % 2 === 0) 'even'
+//     evenOddString = (random % 2 === 0) ? 'even' : 'odd';
+//      console.log(random + ' is ' + evenOddString);
 // }
 
 //
@@ -50,4 +51,23 @@
 //     }
 //     console.log(output);
 //     output = "";
+// }
+
+//
+// for (var i = 1; i < 10; i++) {
+//     var count = 0;
+//     var number = i;
+//     var outputString =
+//     while(count < number) {
+//         outputString = outputString + number.toString();
+//         // console.log("Time " + count + " through the loop " + stringNumber);
+//         count = count + 1;
+//     }
+//     console.log(outputString);
+// }
+
+
+//
+// for(var i = 100; i >= 5; i = i - 5) {
+//     console.log(i)
 // }
