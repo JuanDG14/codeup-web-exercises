@@ -11,8 +11,8 @@
      * console.log planetsArray to check your work
      */
 
-    planetsString.split("|");
-    var planetsArray = planetsString.split("|");
+
+    planetsArray = planetsString.split("|");
     console.log(planetsArray);
 
     /**
@@ -26,16 +26,25 @@
      * string, and <li> tags around each planet.
      */
 
-    planetsString = planetsArray.join("<br>");
-    console.log(planetsString)
+    var planetsString2 = planetsArray.join("<br>");
+    console.log(planetsString2)
+    console.log(planetsArray)
 
 //Bonus?//
-    planetsArray.push("<ul>")
-    planetsArray.unshift("<ul>")
-    planetsArray.reverse()
-    planetsString = planetsArray.join("<li>")
-    console.log(planetsArray)
-    console.log(planetsString)
+//     planetsArray.push("<ul>")
+//     planetsArray.unshift("<ul>")
+//     planetsArray.reverse()
+//     planetsString = planetsArray.join("<li>")
+//     console.log(planetsArray)
+//     console.log(planetsString)
+var planetsList = "<ul>";
 
+    planetsArray.forEach(function(planet) {
+        planetsList += "<li>" + planet + "</li>";
+    })
+    planetsList += "</ul>";
+    console.log(planetsList);
+
+    // document.getElementById('planets').innerHTML = planetsList
 
 })();
