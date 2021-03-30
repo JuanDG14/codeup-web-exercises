@@ -61,20 +61,22 @@
      *  > second([1, 2, 3, 4, 5]) // returns 2
      *  > last([1, 2, 3, 4, 5]) // return 5
      */
+var numbers = [1,2,3,4,5]
 
-    function firstArray (names) {
-        return names[0]
+    function firstArray (numbers) {
+        return numbers[0];
     }
-    console.log(firstArray(names))
+    console.log(firstArray(numbers))
 
-    function secondArray (names) {
-        return names[1]
+    function secondArray (numbers) {
+        return numbers[1];
     }
-    console.log(secondArray(names))
+    console.log(secondArray(numbers))
 
-    function lastArray (names) {
-        return names[3]
+    function lastArray (numbers) {
+        var last = numbers.length - 1;
+        return numbers[last];
     }
-    console.log(lastArray(names))
+    console.log(lastArray(numbers))
 
 })();
