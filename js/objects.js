@@ -12,6 +12,14 @@
      *  > console.log(person.lastName) // "Sanchez"
      */
 
+    var person = {
+        firstName: "Juan",
+        lastName: "Garcia",
+        sayHello: function() {
+            return "Hello from " + this.firstName + " " + this.lastName;
+        }
+    }
+
     /**
      * TODO:
      * Add a sayHello method to the person object that returns a greeting using
@@ -21,6 +29,8 @@
      * Example
      * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
      */
+
+console.log(person.sayHello())
 
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
@@ -36,11 +46,34 @@
      * and console.log the relevant messages for each person
      */
 
-    // var shoppers = [
-    //     {name: 'Cameron', amount: 180},
-    //     {name: 'Ryan', amount: 250},
-    //     {name: 'George', amount: 320}
-    // ];
+    var shoppers = [
+        {name: 'Cameron', amount: 180},
+        {name: 'Ryan', amount: 250},
+        {name: 'George', amount: 320},
+    ];
+    function discount(x) {
+        shoppers.forEach(function (price, i) {
+            if (x[i].amount > 200) {
+                console.log(x[i].name + " your total with the discount comes out to $" + (x[i].amount - (x[i].amount * .12)));
+            } else {
+                console.log(x[i].name + " you get no discount your total is $" + x[i].amount);
+            }
+
+        })
+    }
+
+discount(shoppers);
+//     shoppers.forEach(function(shopper){
+//         var shopperName = shopper.name;
+//         var amountSpent = shopper.amount;
+//         var discount = 0;
+//         if (shopper.amount > 200) {
+//             discount = shopper.amount * .12;
+//         }
+//         var newTotal = shopper.amount -discount;
+//         var message = shopperName + " spent $" + amountSpent.toFixed(2) + ". Their discount is $" + discount.toFixed(2) + ". The new total will be $" + newTotal.toFixed(2);
+//         console.log(message);
+//     })
 
     /** TODO:
      * Create an array of objects that represent books and store it in a
@@ -55,6 +88,16 @@
      * > console.log(books[0].author.lastName) // "Adams"
      */
 
+    var books = [
+        {title: "The Outsiders", author:{ firstName: "S.E", lastName: "Hinton"}},
+        {title: "blink", author:{ firstName: "Malcolm", lastName: "Gladwell"}},
+        {title: "The Great Halifax Explosion", author:{ firstName: "John U.", lastName: "Bacon"}},
+        {title: "The Giver", author:{ firstName: "Lois", lastName: "Lowry"}},
+        {title: "We Were Soldiers Once... and Young", author:{ firstName: "Hal", lastName: "Moore"}},
+    ]
+    console.log(books[0].title)
+    console.log(books[0].author.firstName)
+    console.log(books[0].author.lastName)
     /**
      * TODO:
      * Loop through the books array and output the following information about
@@ -80,6 +123,23 @@
      *      ...
      */
 
+    books.forEach(function(book, index){
+        var bookNumber = index + 1;
+        console.log("Book # " + bookNumber);
+        console.log("Title: " + book.title);
+        console.log("Author: " + book.author.firstName + " " + book.author.lastName);
+    });
+    // books.forEach(function (book) {
+    //     console.log("Book # " + (books.indexOf(book) + 1) + "\nTitle: " + book.title + "\nAuthor: " + book.author.firstName + " " + book.author.lastName);
+    // })
+    // for (var i = 0; i < books.length; i++){
+    //     var bookNumber = i + 1;
+    //     console.log("Book # " + bookNumber);
+    //     console.log("Title: " + books[i].title);
+    //     console.log("Author: " + books[i].author.firstName + " " + books[i].author.lastName);
+    // }
+
+
     /**
      * Bonus:
      * - Create a function named `createBook` that accepts a title and author
@@ -90,5 +150,33 @@
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
+    function createBook(title, author) {
+        var nameArray = author.split(" ");
+        var firstName = nameArray[0];
+        var lastName = nameArray[1];
+        return {
+            title: title,
+            author: {
+                firstName: firstName,
+                lastName: lastName
+            }
+        };
+    }
+
+    books.push(createBook("Storm of Locus", "Rebecca Roanhorse"));
+    books.forEach(function(book, index){
+        var bookNumber = index + 1;
+        console.log("Book # " + bookNumber);
+        console.log("Title: " + book.title);
+        console.log("Author: " + book.author.firstName + " " + book.author.lastName);
+    });
+
+    function showBookInfo(book, bookNumber) {
+        console.log("Book # " + bookNumber);
+        console.log("Title: " + book.title);
+        console.log("Author: " + book.author.firstName + " " + book.author.lastName);
+    }
+books.forEach(showBookInfo)
+
 
 })();
