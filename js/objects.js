@@ -129,9 +129,11 @@ discount(shoppers);
         console.log("Title: " + book.title);
         console.log("Author: " + book.author.firstName + " " + book.author.lastName);
     });
+
     // books.forEach(function (book) {
     //     console.log("Book # " + (books.indexOf(book) + 1) + "\nTitle: " + book.title + "\nAuthor: " + book.author.firstName + " " + book.author.lastName);
-    // })
+    // });
+
     // for (var i = 0; i < books.length; i++){
     //     var bookNumber = i + 1;
     //     console.log("Book # " + bookNumber);
