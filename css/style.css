@@ -1,28 +1,40 @@
+@import "https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap";
 body {
-    background-color: #4ec3c3;
+    font-family: abril fatface;
+    background-color: rebeccapurple;
+    background-image: url("../img/space.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+
 }
 
 .fancy-header, h2 {
-    color:purple;
+    color: #055bfc;
     text-decoration: underline;
     text-align: center;
 
 }
 
+.fancy-header {
+    font-size: 700%;
+}
+
 h2 {
     text-align: left;
+    font-size: 300%;
 }
 
-p {
+p, li {
     font-family: sans-serif;
-    border-bottom: 1px solid black;
+    font-size: 150%;
+
 }
 
-.bottom-border {
-    border-bottom: 1px solid black;
+ol {
+    list-style: upper-roman;
 }
-
-/*h2 {*/
-/*    color: darkred;*/
-/*    text-decoration: underline;*/
-/*}*/
+ul {
+    list-style: square;
+}
