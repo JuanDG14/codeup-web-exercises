@@ -1,0 +1,28 @@
+body {
+    background-color: #4ec3c3;
+}
+
+.fancy-header, h2 {
+    color:purple;
+    text-decoration: underline;
+    text-align: center;
+
+}
+
+h2 {
+    text-align: left;
+}
+
+p {
+    font-family: sans-serif;
+    border-bottom: 1px solid black;
+}
+
+.bottom-border {
+    border-bottom: 1px solid black;
+}
+
+/*h2 {*/
+/*    color: darkred;*/
+/*    text-decoration: underline;*/
+/*}*/
