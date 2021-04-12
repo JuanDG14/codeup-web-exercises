@@ -26,6 +26,7 @@ a {
     color: var(--link-color);
 }
 .top-nav {
+    position: fixed;
     z-index: 1000;
     width: 100%;
     background: var(--light-bg);
@@ -75,7 +76,7 @@ a {
 }
 .profile-image {
     position: absolute;
-    top: 300px;
+    top: 240px;
     height: 150px;
 }
 .profile {
