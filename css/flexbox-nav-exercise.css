@@ -1,12 +1,26 @@
 * {
-    padding: 0;
+    height: 50%;
+    width: 100%;
     margin: 0;
-    font-family: sans-serif;
+    padding: 0;
+    font-family: Arial, Ubuntu, sans-serif;
 }
 
 nav {
     background: gray;
     color: whitesmoke;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+}
+
+.middle {
+    display: flex;
+    align-self: center;
+    padding: -100em;
 }
 
 nav a {
@@ -18,17 +32,4 @@ header ul {
     display: flex;
     list-style: none;
     padding: 0;
-}
-
-header p, header h3 {
-    padding: .5em;
-}
-
-#branding {
-    margin-right: auto;
-}
-
-.tittle {
-    display: flex;
-    align-items: center;
 }
