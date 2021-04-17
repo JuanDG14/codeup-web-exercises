@@ -7,20 +7,19 @@
 }
 
 nav {
+    display: flex;
     background: gray;
     color: whitesmoke;
 }
 
 .header {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1em;
+    /*display: inline-block;*/
+    justify-content: flex-start;
+    padding: 2em;
 }
 
-.middle {
-    display: flex;
-    align-self: center;
-    padding: -100em;
+.nav-left {
+    padding: 0;
 }
 
 nav a {
