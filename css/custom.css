@@ -10,3 +10,17 @@ h1, .jumbotron {
 .opaque-bg {
     background: rgba(255, 255, 255, .7);
 }
+
+.form-group {
+    text-align: start;
+    padding: 1em;
+}
+
+.card {
+    margin: 1em;
+}
+
+.name {
+    border: none;
+    margin: 1em;
+}
