@@ -1,0 +1,16 @@
+h1 {
+    padding-bottom: 1em;
+}
+
+#card {
+    border: none;
+}
+
+hr {
+    border-width: .3em;
+    background-color: #89a26b;
+}
+
+h5, h1 {
+    font-weight: bold;
+}
