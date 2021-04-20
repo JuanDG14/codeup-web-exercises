@@ -14,3 +14,7 @@ hr {
 h5, h1 {
     font-weight: bold;
 }
+
+li {
+    list-style-type: none;
+}
