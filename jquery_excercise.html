@@ -24,10 +24,15 @@
             reiciendis sed velit.
         </li>
     </ul>
+
+    <p id="text2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus cum debitis deserunt distinctio
+        eaque earum fuga, impedit inventore ipsa ipsum labore neque nostrum officia, perferendis quae quas, quidem
+        sapiente!</p>
 </div>
 
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
+    "use strict";
     $(document).ready(function () {
         // alert("your dom has finished loading")
         // var div = $("#random-div").text();
@@ -43,6 +48,23 @@
         // alert(heading)
         // $("h1, p, li").css("background-color", "red");
     });
+
+    $('#header').click(function () {
+        $(this).css('background-color', 'blue');
+    });
+
+    $('p').dblclick(function () {
+        $('p').css('font-size', '18px');
+    });
+
+    $('li').hover(
+        function () {
+            $(this).css('color', 'red');
+        },
+        function () {
+            $(this).css('color', 'black');
+        }
+    );
 </script>
 </body>
 </html>

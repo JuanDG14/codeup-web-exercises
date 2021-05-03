@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Konami Code</title>
+    <link rel="stylesheet" href="css/konami.css">
+</head>
+<body>
+<h1 id="tittle">Welcome! Enter The Right Code To Start Your Adventure</h1>
+<a href="https://en.wikipedia.org/wiki/Konami_Code">I'll give you a hint? since you were able to find this</a>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script>
+    "use strict";
+
+    $('a').hover(
+        function () {
+            $(this).css('color', 'red');
+        },
+        function () {
+            $(this).css('color', 'black');
+        }
+    );
+
+    var code = [];
+    var konami = [38,38,40,40,37,39,37,39,66,65];
+    $(document).keydown(function(event) {
+        code.push( event.keyCode );
+            if (JSON.stringify(konami).length === JSON.stringify(code).length) {
+                if (JSON.stringify(konami) === JSON.stringify(code)) {
+                    alert("Warning!!! consequences may impact the world around you!")
+                    alert("Welcome to your new life. Enjoy!!");
+                    $('a').remove()
+                    var konohavillage = {
+                        'background-image': 'url("img/village.jpeg")',
+                        'background-size': 'cover'
+                    }
+                    $('body').css(konohavillage)
+                    $('h1').html("Welcome to the village hidden in the leaf !").css({
+                        'color': 'maroon',
+                        'margin-left': 'auto',
+                        'margin-right': 'auto',
+                        'font-family': 'Arial'
+                    })
+
+                }
+            }
+        console.log(event.keyCode);
+    });
+</script>
+</body>
+</html>
+
+<!--$("<audio></audio>").attr({-->
+<!--'src':'audio/Wrong-answer-sound-effect.mp3',-->
+<!--'volume':0.01,-->
+<!--'autoplay':'autoplay'-->
+<!--}).appendTo("body");-->
