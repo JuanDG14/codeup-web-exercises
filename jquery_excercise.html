@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>JQuery Intro</title>
+    <link rel="stylesheet" href="css/jquery-essential-methods-lecture.css">
 </head>
 <body>
 <div id="random-div">
     <h1 id="header" class="tittle">This right here is my Header</h1>
+    <h1 id="follower" class="tittle">This right here is my Header</h1>
+    <h2 id="leader"><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aut eos sit!
+        Consequatur deleniti deserunt ipsum laudantium, mollitia natus nemo odit officiis, possimus quisquam recusandae
+        similique suscipit, voluptatibus voluptatum?</em></h2>
 
     <p id="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus cum debitis deserunt distinctio
         eaque earum fuga, impedit inventore ipsa ipsum labore neque nostrum officia, perferendis quae quas, quidem
@@ -28,11 +33,20 @@
     <p id="text2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus cum debitis deserunt distinctio
         eaque earum fuga, impedit inventore ipsa ipsum labore neque nostrum officia, perferendis quae quas, quidem
         sapiente!</p>
+
+    <h2><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aut eos sit!
+        Consequatur deleniti deserunt ipsum laudantium, mollitia natus nemo odit officiis, possimus quisquam recusandae
+        similique suscipit, voluptatibus voluptatum?</em></h2>
+
 </div>
 
+<button id="font-changer">change font</button>
 <script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/jquery-essential-methods-lecture.js"></script>
 <script>
     "use strict";
+
+
     $(document).ready(function () {
         // alert("your dom has finished loading")
         // var div = $("#random-div").text();
@@ -49,22 +63,22 @@
         // $("h1, p, li").css("background-color", "red");
     });
 
-    $('#header').click(function () {
-        $(this).css('background-color', 'blue');
-    });
-
-    $('p').dblclick(function () {
-        $('p').css('font-size', '18px');
-    });
-
-    $('li').hover(
-        function () {
-            $(this).css('color', 'red');
-        },
-        function () {
-            $(this).css('color', 'black');
-        }
-    );
+    // $('#header').click(function () {
+    //     $(this).css('background-color', 'blue');
+    // });
+    //
+    // $('p').dblclick(function () {
+    //     $('p').css('font-size', '18px');
+    // });
+    //
+    // $('li').hover(
+    //     function () {
+    //         $(this).css('color', 'red');
+    //     },
+    //     function () {
+    //         $(this).css('color', 'black');
+    //     }
+    // );
 </script>
 </body>
 </html>

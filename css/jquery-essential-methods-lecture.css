@@ -1,0 +1,14 @@
+
+
+.highlight {
+    background-color: cornsilk;
+}
+
+.hotPinkIt {
+    color: hotpink;
+}
+
+::selection {
+    color: white;
+    background-color: #423493;
+}
