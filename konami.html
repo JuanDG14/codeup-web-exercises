@@ -21,36 +21,41 @@
     );
 
     var code = [];
-    var konami = [38,38,40,40,37,39,37,39,66,65];
-    $(document).keydown(function(event) {
-        code.push( event.keyCode );
-            if (JSON.stringify(konami).length === JSON.stringify(code).length) {
-                if (JSON.stringify(konami) === JSON.stringify(code)) {
-                    alert("Warning!!! consequences may impact the world around you!")
-                    alert("Welcome to your new life. Enjoy!!");
-                    $('a').remove()
-                    var konohavillage = {
-                        'background-image': 'url("img/village.jpeg")',
-                        'background-size': 'cover'
-                    }
-                    $('body').css(konohavillage)
-                    $('h1').html("Welcome to the village hidden in the leaf !").css({
-                        'color': 'maroon',
-                        'margin-left': 'auto',
-                        'margin-right': 'auto',
-                        'font-family': 'Arial'
-                    })
-
+    var konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+    $(document).keydown(function (event) {
+        if (event.keyCode === 13 && konami.join() === code.join()) {
+                alert("Warning!!! consequences may impact the world around you!")
+                alert("Welcome to your new life. Enjoy!!");
+                $('a').remove()
+                var konohavillage = {
+                    'background-image': 'url("img/village.jpeg")',
+                    'background-size': 'cover'
                 }
+                $("<audio></audio>").attr({
+                    'src': 'audio/Naruto-theme.mp3',
+                    'volume': 0.01,
+                    'autoplay': 'autoplay'
+                }).appendTo("body");
+                $('body').css(konohavillage)
+                $('h1').html("Welcome to the village hidden in the leaf !").css({
+                    'color': 'maroon',
+                    'margin-left': 'auto',
+                    'margin-right': 'auto',
+                    'font-family': 'Arial'
+                })
+        } else if (event.keyCode === 13 && konami.join() !== code.join()) {
+            alert('thats the wrong number!');
+            var titan = {
+                'background-image': 'url("img/")',
+                'background-size': 'cover'
             }
+            $('body').css(titan)
+            return code = [];
+        }
         console.log(event.keyCode);
+        code.push(event.keyCode);
     });
 </script>
 </body>
 </html>
 
-<!--$("<audio></audio>").attr({-->
-<!--'src':'audio/Wrong-answer-sound-effect.mp3',-->
-<!--'volume':0.01,-->
-<!--'autoplay':'autoplay'-->
-<!--}).appendTo("body");-->
