@@ -4,6 +4,33 @@
     <meta charset="UTF-8">
     <title>JQUERY_FAQ</title>
     <style>
+        h1 {
+            text-align: center;
+        }
+
+        #container {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .picture {
+            display: flex;
+            flex-direction: column;
+            margin: 0 10px;
+        }
+
+        .picture img {
+            border: 10px solid saddlebrown;
+        }
+
+        .swap {
+            align-self: center;
+            margin-top: 15px;
+        }
+
         .invisible {
             visibility: hidden;
         }
@@ -147,22 +174,27 @@
         <li>If not for the Channel Islands, there would be no seabirds in Southern California.</li>
     </ul>
 
-    <button>Change Background Color</button>
+    <button id="change">Change Background Color</button>
 </footer>
 <hr>
+<h1>JQUERY TRAVERSING</h1>
+<div id="container">
+    <div id="picture1" class="picture">
+        <img src="img/wormhole.gif" width="400" height="400">
+        <button id="button1" class="swap">SWAP</button>
+    </div>
 
-<div>
-    <img>
+    <div id="picture2" class="picture">
+        <img src="img/uzumaki.jpeg" width="400" height="400">
+        <button id="button2" class="swap">SWAP</button>
+    </div>
+
+    <div id="picture3" class="picture">
+        <img src="img/village.jpeg" width="400" height="400">
+        <button id="button3" class="swap">SWAP</button>
+    </div>
+
 </div>
-
-<div>
-    <img>
-</div>
-
-<div>
-    <img>
-</div>
-
 <script src="js/jquery-3.6.0.min.js"></script>
 
 <script>
@@ -182,9 +214,11 @@
             $(this).toggleClass('invisible')
         });
 
-        $('button').click(function () {
-            $('ul').children().next().next().next().css({
-                'background-color': 'yellow'
+        $('#change').click(function () {
+            $('ul').each(function () {
+                $(this).children().last().css({
+                    'background-color': 'yellow'
+                });
             });
         });
 
@@ -199,6 +233,41 @@
                 'color': 'blue'
             });
         });
+
+        $('#button1').click(function () {
+            var nextImage = $(this).parent().next().children().first();
+            var nextImageSrc = nextImage.attr('src');
+            var thisSrc = $(this).prev().attr('src');
+            $(this).prev().attr('src', nextImageSrc);
+            nextImage.attr('src', thisSrc);
+        });
+
+        $('#button2').click(function () {
+            var random = Math.floor(Math.random()*2)
+            var nextImage = $(this).parent().next().children().first();
+            var nextImageSrc = nextImage.attr('src');
+            var previousImage = $(this).parent().prev().children().first();
+            var previousImageSrc = previousImage.attr('src');
+            var thisImage = $(this).prev();
+            var thisSrc = thisImage.attr('src');
+            if (random === 0){
+                previousImage.attr('src', thisSrc);
+                thisImage.attr('src', previousImageSrc);
+            } else {
+                $(this).prev().attr('src', nextImageSrc);
+                nextImage.attr('src', thisSrc);
+            }
+        });
+
+
+        $('#button3').click(function () {
+            var previousImage = $(this).parent().prev().children().first();
+            var previousImageSrc = previousImage.attr('src');
+            var thisImage = $(this).prev();
+            var thisSrc = thisImage.attr('src');
+            previousImage.attr('src', thisSrc);
+            thisImage.attr('src', previousImageSrc);
+        })
 
     });
 
