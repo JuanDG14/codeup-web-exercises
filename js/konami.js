@@ -17,7 +17,7 @@ $('a').hover(
 var code = [];
 var konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
 $(document).keydown(function (event) {
-    if (event.keyCode === 13){
+    if (event.keyCode === 13) {
         var loading = {
             'background-image': 'url("img/loading.gif")',
             'background-size': 'cover'
@@ -26,19 +26,22 @@ $(document).keydown(function (event) {
         $('body').css(loading).delay(5000).fadeTo('slow', 1);
 
     }
+    // if (event.keyCode === 13 && konami.join() === code.join()) {
+    //     // var loading = {
+    //     //     'background-image': 'url("img/loading.gif")',
+    //     //     'background-size': 'cover'
+    //     // }
+    //     // $('h1').html("Welcome to your new life. Enjoy!!")
+    //     // $('body').css(loading).delay(5000).fadeTo('slow', 1);
+    //
+    //     // $('#tittle').animate({'opacity': 10}, 7000, function () {
+    //     //     $(this).text("Welcome to the village hidden in the leaf !");
+    //     // }).animate({'opacity': 10}, 1000);
+    //
     if (event.keyCode === 13 && konami.join() === code.join()) {
-        // var loading = {
-        //     'background-image': 'url("img/loading.gif")',
-        //     'background-size': 'cover'
-        // }
-        // $('h1').html("Welcome to your new life. Enjoy!!")
-        // $('body').css(loading).delay(5000).fadeTo('slow', 1);
-
         $('#tittle').animate({'opacity': 10}, 7000, function () {
             $(this).text("Welcome to the village hidden in the leaf !");
         }).animate({'opacity': 10}, 1000);
-
-    } if (event.keyCode === 13 && konami.join() === code.join()) {
         // alert("Warning!!! consequences may impact the world around you!")
         // alert("Welcome to your new life. Enjoy!!");
         $('a').remove()
@@ -64,15 +67,23 @@ $(document).keydown(function (event) {
         //     'font-family': 'Arial'
         // })
     } else if (event.keyCode === 13 && konami.join() !== code.join()) {
+        $('#tittle').animate({'opacity': 10}, 7000, function () {
+            $(this).text("Good luck try not to get killed or eaten!!!");
+        }).animate({'opacity': 10}, 1000);
         $('a').remove()
         $('p').remove()
         var titan = {
-            'background-image': 'url("img/titan.peg")',
+            'background-image': 'url("img/titan.jpeg")',
             'background-size': 'cover'
         }
+        $("<audio></audio>").attr({
+            'src': 'audio/attack-on-titan.mp3',
+            'volume': 0.01,
+            'autoplay': 'autoplay'
+        }).appendTo("body")
         $('body').fadeTo('slow', 0.05, function () {
             $(this).css(titan);
-        }).delay(5000).fadeTo('slow', 1);
+        }).delay(1000).fadeTo('slow', 1);
     }
     console.log(event.keyCode);
     code.push(event.keyCode);
