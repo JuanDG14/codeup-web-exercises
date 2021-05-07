@@ -1,0 +1,15 @@
+.top-nav {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    background: var(--light-bg);
+}
+.nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-image: url("../img/sunset.jpeg");
+    background-size: 100%;
+}
