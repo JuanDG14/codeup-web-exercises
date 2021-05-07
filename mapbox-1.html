@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Map</title>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        .popup-font {
+            font-family: Chalkboard, sansarif;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<div id='map' style='width: 600px; height: 600px;'></div>
+
+
+<script src="js/keys.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+<script>
+  mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+  var map = new mapboxgl.Map({
+    container: 'map', // container ID
+  });
+
+  map.setStyle('mapbox://styles/mapbox/streets-v11')
+  map.setZoom(12)
+  map.setCenter([-98.4861, 29.4260])
+  // setTimeout(function (){
+  //     map.jumpTo({center: [-97.0403, 32.8998]});
+  //     map.setStyle('mapbox://styles/mapbox/satellite-streets-v11');
+  // }, 10000)
+  // setTimeout(function (){
+  //     map.jumpTo({center: [-98.4683, 29.5312]});
+  // }, 15000)
+
+map.addControl(new mapboxgl.NavigationControl())
+var marker = new mapboxgl.Marker({
+    color: 'red',
+    draggable: true
+})
+  .setLngLat([-98.4861, 29.4260])
+    .setDraggable(true)
+  .addTo(map)
+
+  marker.on('dragend', function () {
+      alert(marker.getLngLat().toString())
+  })
+
+  var popup = new mapboxgl.Popup()
+      .setLngLat(marker.getLngLat())
+      .setHTML("<h3>The Alamo</h3>")
+      .addTo(map);
+
+
+  marker.setPopup(popup);
+  popup.addClass('popup-font')
+</script>
+</body>
+</html>

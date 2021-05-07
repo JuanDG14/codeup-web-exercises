@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MAPS API</title>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet'/>
+</head>
+<body>
+<h1></h1>
+<div id='map' style='width: 600px; height: 600px;'></div>
+
+
+<script src="js/keys.js"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+<script>
+
+  mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+  var map = new mapboxgl.Map({
+    container: 'map', // container ID
+  });
+
+  map.setStyle('mapbox://styles/mapbox/satellite-streets-v11')
+  map.setZoom(5)
+  map.setCenter([-98.4936, 29.4241])
+
+  map.addControl(new mapboxgl.NavigationControl())
+  var marker = new mapboxgl.Marker({
+    color: 'blue',
+  })
+          .setLngLat([-74.0445, 40.6892])
+          .setDraggable(true)
+          .addTo(map)
+</script>
+</body>
+</html>

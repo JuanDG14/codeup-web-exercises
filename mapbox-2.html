@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox lecture</title>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet'/>
+</head>
+<body>
+<h1></h1>
+<div id='map' style='width: 600px; height: 600px;'></div>
+
+
+<script src="js/keys.js"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+<script>
+    mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+    var map = new mapboxgl.Map({
+        container: 'map', // container ID
+    });
+
+    map.setStyle('mapbox://styles/mapbox/satellite-streets-v11')
+    map.setZoom(6)
+    map.setCenter([-74.2179, 43.2994])
+
+    map.addControl(new mapboxgl.NavigationControl())
+    var marker = new mapboxgl.Marker({
+        color: 'blue',
+    })
+        .setLngLat([-74.0445, 40.6892])
+        .setDraggable(true)
+        .addTo(map)
+
+    // marker.on('dragend', function(){
+    //   var coords = marker.getLngLat().toString();
+    //   var paren1 = coords.indexOf('(');
+    //   var comma = coords.indexOf(',');
+    //   var paren2 = coords.indexOf(')');
+    //   var long = coords.slice(paren1 + 1, comma);
+    //   var lat = coords.slice(comma + 1, paren2);
+    //   long = parseFloat(long).toFixed(2);
+    //   lat = parseFloat(lat).toFixed(2);
+    //   $("h1").html(coords);
+    //   $("h2").before("<h4>You dropped your marker at:</h4>");
+    //   $("h2").html("longitude " + long + ", latitude " + lat);
+    // });
+    $('h1').html(marker.getLngLat().toString())
+    marker.on('dragend', function () {
+        $('h1').html(marker.getLngLat().toString())
+        marker.setPopup();
+    })
+
+
+    var popup = new mapboxgl.Popup()
+        .setLngLat(marker.getLngLat())
+        .setHTML("<h3>Statue Of Liberty</h3>")
+        .addTo(map);
+
+
+    marker.setPopup(popup);
+
+    geocode("600 Navarro St #600, San Antonio, TX 78205", MAPBOX_ACCESS_TOKEN).then(function (results) {
+        console.log(results);
+    })
+    reverseGeocode({lng: -98.489598, lat: 29.426808}, MAPBOX_ACCESS_TOKEN).then(function(results) {
+        console.log(results);
+    })
+
+
+</script>
+</body>
+</html>
