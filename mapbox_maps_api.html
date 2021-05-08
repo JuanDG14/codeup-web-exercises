@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MAPS API</title>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet'/>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet'/>
 </head>
 <body>
 <h1></h1>
@@ -16,55 +16,79 @@
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
 <script>
 
-  mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
-  var map = new mapboxgl.Map({
-    container: 'map',
-  });
+    mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+    var map = new mapboxgl.Map({
+        container: 'map',
+    });
 
-  map.setStyle('mapbox://styles/mapbox/satellite-streets-v11')
-  map.setZoom(5)
-  map.setCenter([-98.4936, 29.4241])
+    map.setStyle('mapbox://styles/mapbox/satellite-streets-v11')
+    map.setZoom(5)
+    map.setCenter([-98.4936, 29.4241])
 
-  map.addControl(new mapboxgl.NavigationControl())
-  var marker1 = new mapboxgl.Marker({
-    color: 'blue',
-  })
-          .setLngLat([-98.4849, 29.5657])
-          .setDraggable(false)
-          .addTo(map)
+    map.addControl(new mapboxgl.NavigationControl())
+    // var marker1 = new mapboxgl.Marker({
+    //     color: 'blue',
+    // })
+    //     .setLngLat([-98.48426129297395, 29.572432398246224])
+    //     .setDraggable(false)
+    //     .addTo(map)
+    // var popup1 = new mapboxgl.Popup()
+    //     .setLngLat(marker1.getLngLat())
+    //     .setHTML("<h3>El Bucanero-Embassy</h3>")
+    // marker1.setPopup(popup1);
+    //
+    // var marker2 = new mapboxgl.Marker({
+    //     color: 'green',
+    // })
+    //     .setLngLat([-98.48917160714905, 29.565217624207687])
+    //     .setDraggable(false)
+    //     .addTo(map)
+    // var popup2 = new mapboxgl.Popup()
+    //     .setLngLat(marker2.getLngLat())
+    //     .setHTML("<h3>Hero’s Ramen x Sushi</h3>")
+    // marker2.setPopup(popup2);
+    //
+    // var marker3 = new mapboxgl.Marker({
+    //     color: 'red',
+    // })
+    //     .setLngLat([-98.49969574902913, 29.50311404067509])
+    //     .setDraggable(false)
+    //     .addTo(map)
+    // var popup3 = new mapboxgl.Popup()
+    //     .setLngLat(marker3.getLngLat())
+    //     .setHTML("<h3>Las Sabrosas de Guanajuato</h3>")
+    // marker3.setPopup(popup3);
 
-  var popup1 = new mapboxgl.Popup()
-      .setLngLat(marker1.getLngLat())
-      .setHTML("<h3>El Bucanero-Embassy</h3>")
-
-  marker1.setPopup(popup1);
-
-  var marker2 = new mapboxgl.Marker({
-      color: 'green',
-  })
-      .setLngLat([-98.48917160714905, 29.565217624207687])
-      .setDraggable(false)
-      .addTo(map)
-
-  var popup2 = new mapboxgl.Popup()
-      .setLngLat(marker2.getLngLat())
-      .setHTML("<h3>Hero’s Ramen x Sushi</h3>")
-
-  marker2.setPopup(popup2);
-
-  var marker3 = new mapboxgl.Marker({
-      color: 'red',
-  })
-      .setLngLat([-98.49969574902913, 29.50311404067509])
-      .setDraggable(false)
-      .addTo(map)
-  var popup3 = new mapboxgl.Popup()
-      .setLngLat(marker3.getLngLat())
-      .setHTML("<h3>Las Sabrosas de Guanajuato</h3>")
-  marker3.setPopup(popup3);
-
-
-
+    var favRestaurants = [
+        {
+            name: 'El Bucanero-Embassy',
+            lngLat: [-98.48426129297395, 29.572432398246224],
+            color: 'blue'
+        },
+        {
+            name: 'Hero’s Ramen x Sushi',
+            lngLat: [-98.48917160714905, 29.565217624207687],
+            color: 'green'
+        },
+        {
+            name: 'Las Sabrosas de Guanajuato',
+            lngLat: [-98.49969574902913, 29.50311404067509],
+            color: 'red'
+        }
+    ]
+    function display (restaurant) {
+        var marker = new mapboxgl.Marker({
+            color: restaurant.color,
+        })
+            .setLngLat(restaurant.lngLat)
+            .setDraggable(false)
+            .addTo(map)
+        var popup = new mapboxgl.Popup()
+            .setLngLat(restaurant.lngLat)
+            .setHTML("<h3>" + restaurant.name + "</h3>")
+        marker.setPopup(popup);
+    }
+    favRestaurants.forEach(display);
 </script>
 </body>
 </html>
