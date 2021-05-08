@@ -18,7 +18,7 @@
 
   mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
   var map = new mapboxgl.Map({
-    container: 'map', // container ID
+    container: 'map',
   });
 
   map.setStyle('mapbox://styles/mapbox/satellite-streets-v11')
@@ -26,12 +26,41 @@
   map.setCenter([-98.4936, 29.4241])
 
   map.addControl(new mapboxgl.NavigationControl())
-  var marker = new mapboxgl.Marker({
+  var marker1 = new mapboxgl.Marker({
     color: 'blue',
   })
-          .setLngLat([-74.0445, 40.6892])
-          .setDraggable(true)
+          .setLngLat([-98.4849, 29.5657])
+          .setDraggable(false)
           .addTo(map)
+
+  var popup1 = new mapboxgl.Popup()
+      .setLngLat(marker1.getLngLat())
+      .setHTML("<h3>El Buccanero</h3>")
+
+  marker1.setPopup(popup);
+
+  var marker2 = new mapboxgl.Marker({
+      color: 'green',
+  })
+      .setLngLat([-98.4849, 29.5657])
+      .setDraggable(false)
+      .addTo(map)
+
+  var popup2 = new mapboxgl.Popup()
+      .setLngLat(marker2.getLngLat())
+      .setHTML("<h3>El Buccanero</h3>")
+
+  marker2.setPopup(popup);
+
+  var marker3 = new mapboxgl.Marker({
+      color: 'red',
+  })
+      .setLngLat([-98.4849, 29.5657])
+      .setDraggable(false)
+      .addTo(map)
+
+
+
 </script>
 </body>
 </html>
