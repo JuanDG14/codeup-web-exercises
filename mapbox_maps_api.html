@@ -35,29 +35,33 @@
 
   var popup1 = new mapboxgl.Popup()
       .setLngLat(marker1.getLngLat())
-      .setHTML("<h3>El Buccanero</h3>")
+      .setHTML("<h3>El Bucanero-Embassy</h3>")
 
-  marker1.setPopup(popup);
+  marker1.setPopup(popup1);
 
   var marker2 = new mapboxgl.Marker({
       color: 'green',
   })
-      .setLngLat([-98.4849, 29.5657])
+      .setLngLat([-98.48917160714905, 29.565217624207687])
       .setDraggable(false)
       .addTo(map)
 
   var popup2 = new mapboxgl.Popup()
       .setLngLat(marker2.getLngLat())
-      .setHTML("<h3>El Buccanero</h3>")
+      .setHTML("<h3>Hero’s Ramen x Sushi</h3>")
 
-  marker2.setPopup(popup);
+  marker2.setPopup(popup2);
 
   var marker3 = new mapboxgl.Marker({
       color: 'red',
   })
-      .setLngLat([-98.4849, 29.5657])
+      .setLngLat([-98.49969574902913, 29.50311404067509])
       .setDraggable(false)
       .addTo(map)
+  var popup3 = new mapboxgl.Popup()
+      .setLngLat(marker3.getLngLat())
+      .setHTML("<h3>Las Sabrosas de Guanajuato</h3>")
+  marker3.setPopup(popup3);
 
 
 
