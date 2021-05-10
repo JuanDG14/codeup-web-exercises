@@ -11,12 +11,16 @@
 
 <div id='map' style='width: 600px; height: 600px;'></div>
 
+<div id="weather"></div>
+
 
 <script src="js/keys.js"></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
 <script src="js/mapbox-geocoder-utils.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
+    "use strict"
     // var coordinates = [29.4241, -98.4936];
     // $.get("https://api.openweathermap.org/data/2.5/onecall?units=imperial&lat=" + coordinates[0] + "&lon=" + coordinates[1] + "&exclude=current,hourly,minutely&appid=" + WEATHER_MAP_TOKEN)
     //     .done(function (resp) {
@@ -43,15 +47,47 @@
     map.setCenter([-98.4936, 29.4241])
 
 
-    $.get("http://api.openweathermap.org/data/2.5/weather", {
-        APPID: WEATHER_MAP_TOKEN,
-        lat:    29.423017,
-        lon:   -98.48527,
-        units: "imperial"
-    }).done(function(data) {
-        console.log('current weather', data);
-    });
+    // $.get("https://api.openweathermap.org/data/2.5/onecall", {
+    //     APPID: WEATHER_MAP_TOKEN,
+    //     lat:    29.423017,
+    //     lon:   -98.48527,
+    //     units: "imperial"
+    // }).done(function(data) {
+    //     console.log('current weather', data);
+    // });
 
+   // °
+
+        function dayWeather() {
+            $.get("https://api.openweathermap.org/data/2.5/onecall", {
+                APPID: WEATHER_MAP_TOKEN,
+                lat: 29.423017,
+                lon: -98.48527,
+                units: "imperial"
+            }).done(function (data) {
+                console.log('current weather', data);
+                // console.log(data.current.clouds)
+                // console.log(data.daily[0].clouds)
+                // for (var i = 0; i < data.daily.length; i++) {
+                //     var htmlStr = "<div id='weather" + (i + 1) + "'>";
+                //     htmlStr += '<p>' + data.daily[i].clouds + '</p>';
+                //     htmlStr += '<p>' + data.daily[i].temp.day + '</p>';
+                //     htmlStr += '<p>' + data.daily[i].feels_like.day + '</p>';
+                //     htmlStr += '<p>' + data.daily[i].wind_speed + '</p>';
+                //     htmlStr += '</div>';
+                //     $('#weather').append(htmlStr)
+                //
+                // }
+                // console.log(htmlStr);
+            });
+        }
+        dayWeather();
+    //
+    //             return html
+    //         }
+    //         dayWeather()
+    //     }
+    // });
 
 
 </script>
