@@ -4,17 +4,45 @@
     <meta charset="UTF-8">
     <title>Weather Map</title>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+    .card {
+        border-radius: 3em;
+    }
+
+        .grow { transition: all .2s ease-in-out; }
+
+        .grow:hover { transform: scale(1.1); }
+
+
+    </style>
 </head>
 <body>
 
-<h1>Open Console</h1>
+<nav class="navbar navbar-primary bg-primary">
+    <span class="navbar-brand mb-0 h1">Weather Map</span>
+</nav>
+<h2 class="text-center">Weather Forecast For The Upcoming 5 days</h2>
+<div class="container">
+    <label>
+        <input id="location" type="text" placeholder="Search For A City">
+    </label>
+    <button id="search" type="submit">Search</button>
+    <div id='map' style='width: 100%; height: 600px;'></div>
+</div>
+<div id="weather" class="d-flex justify-content-around" style="margin-top: 2em"></div>
 
-<div id='map' style='width: 600px; height: 600px;'></div>
 
-<div id="weather"></div>
+
+
+
+
 
 
 <script src="js/keys.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
 <script src="js/mapbox-geocoder-utils.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -26,8 +54,9 @@
         container: 'map',
     });
     map.setStyle('mapbox://styles/mapbox/satellite-streets-v11')
-    map.setZoom(10)
+    map.setZoom(7)
     map.setCenter([-98.4936, 29.4241])
+    map.addControl(new mapboxgl.NavigationControl())
 
     function dayWeather(lat, lon) {
         $.get("https://api.openweathermap.org/data/2.5/onecall", {
@@ -36,20 +65,24 @@
             lon: lon,
             units: "imperial"
         }).done(function (data) {
+            console.log(data)
             $('#weather').html('');
-            for (var i = 0; i < data.daily.length; i++) {
+            for (var i = 0; i < 5; i++) {
                 var today = data.daily[i];
                 var todayDate = new Date(today.dt * 1000);
                 var date = todayDate.toDateString();
                 console.log(date)
-                var htmlStr = "<div id='weather" + (i + 1) + "'>";
-                htmlStr += '<h3>' + date + '</h3>';
-                htmlStr += '<ul>'
-                htmlStr += '<li>' + data.daily[i].humidity + '</li>';
-                htmlStr += '<li>' + data.daily[i].temp.day + '°' + '</li>';
-                htmlStr += '<li>' + data.daily[i].pop + '</li>';
-                htmlStr += '<li>' + data.daily[i].weather[0].main + '</li>';
-                htmlStr += '</ul>';
+                var htmlStr = "<div id='weather" + (i + 1) + "' class='card grow' style=\"width: 20rem;\">";
+                htmlStr += '<div class="card-body">'
+                htmlStr += '<h3 class="card-title">' + date + '</h3>';
+                htmlStr += '<div>'
+                htmlStr += '<div class="card-text">' + 'Humidity: ' + data.daily[i].humidity + '</div>';
+                htmlStr += '<div class="card-text">' + 'Highest temp for the day: ' + Math.round(data.daily[i].temp.max) + '°' + '</div>';
+                htmlStr += '<div class="card-text">' + 'Lowest temp for the day: ' + Math.round(data.daily[i].temp.min) + '°' + '</div>';
+                htmlStr += '<div class="card-text">' + 'Percipitatiom: ' + data.daily[i].pop + '</div>';
+                htmlStr += '<div class="card-text">' + 'Wheather will be: ' + data.daily[i].weather[0].description + '</div>';
+                htmlStr += '<img style="margin: 0 40%" src="http://openweathermap.org/img/w/' + data.daily[i].weather[0].icon +'.png"> '
+                htmlStr += '</div>';
                 htmlStr += '</div>';
                 $('#weather').append(htmlStr);
             }
@@ -70,6 +103,28 @@
         marker.setPopup();
         console.log()
     })
+
+
+
+
+        $('#search').click( function(){
+            var userInput = $('.location').val()
+        })
+        dayWeather(marker.getLngLat().lat, marker.getLngLat().lng)
+
+    function markerSearch() {
+        geocode(userInput, MAPBOX_ACCESS_TOKEN).then(function (results) {
+            // do something with results
+            marker.setLngLat(results)
+            dayWeather(marker.getLngLat().lat, marker.getLngLat().lng)
+            console.log(results)
+            map.flyTo({
+                center: results,
+                zoom: 7,
+                speed: 1
+            })
+        })
+    }
 
 
 
