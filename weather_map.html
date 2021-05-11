@@ -58,6 +58,17 @@
 
     dayWeather();
 
+    var marker = new mapboxgl.Marker({
+        color: 'blue',
+    })
+        .setLngLat([-98.48426129297395, 29.572432398246224])
+        .setDraggable(false)
+        .addTo(map)
+
+    var popup = new mapboxgl.Popup()
+        .setLngLat(marker.getLngLat())
+        .setHTML("<h3>El Bucanero-Embassy</h3>")
+    marker.setPopup(popup);
 
     // });
 
