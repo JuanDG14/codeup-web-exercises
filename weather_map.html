@@ -29,14 +29,14 @@
     map.setZoom(10)
     map.setCenter([-98.4936, 29.4241])
 
-    function dayWeather() {
+    function dayWeather(lat, lon) {
         $.get("https://api.openweathermap.org/data/2.5/onecall", {
             APPID: WEATHER_MAP_TOKEN,
-            lat: 29.423017,
-            lon: -98.48527,
+            lat: lat,
+            lon: lon,
             units: "imperial"
         }).done(function (data) {
-
+            $('#weather').html('');
             for (var i = 0; i < data.daily.length; i++) {
                 var today = data.daily[i];
                 var todayDate = new Date(today.dt * 1000);
@@ -55,22 +55,25 @@
             }
         });
     }
+dayWeather();
 
-    dayWeather();
+
 
     var marker = new mapboxgl.Marker({
         color: 'blue',
     })
-        .setLngLat([-98.48426129297395, 29.572432398246224])
-        .setDraggable(false)
+        .setLngLat([-98.4936, 29.4241])
+        .setDraggable(true)
         .addTo(map)
 
-    var popup = new mapboxgl.Popup()
-        .setLngLat(marker.getLngLat())
-        .setHTML("<h3>El Bucanero-Embassy</h3>")
-    marker.setPopup(popup);
 
-    // });
+    marker.on('dragend', function() {
+        $('#weather').html(dayWeather(marker.getLngLat().lat, marker.getLngLat().lng))
+        marker.setPopup();
+        console.log()
+    })
+
+
 
 
 </script>
