@@ -55,8 +55,6 @@
             }
         });
     }
-dayWeather();
-
 
 
     var marker = new mapboxgl.Marker({
@@ -65,10 +63,10 @@ dayWeather();
         .setLngLat([-98.4936, 29.4241])
         .setDraggable(true)
         .addTo(map)
-
+    dayWeather(marker.getLngLat().lat, marker.getLngLat().lng)
 
     marker.on('dragend', function() {
-        $('#weather').html(dayWeather(marker.getLngLat().lat, marker.getLngLat().lng))
+        dayWeather(marker.getLngLat().lat, marker.getLngLat().lng)
         marker.setPopup();
         console.log()
     })
