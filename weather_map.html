@@ -21,23 +21,6 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
     "use strict"
-    // var coordinates = [29.4241, -98.4936];
-    // $.get("https://api.openweathermap.org/data/2.5/onecall?units=imperial&lat=" + coordinates[0] + "&lon=" + coordinates[1] + "&exclude=current,hourly,minutely&appid=" + WEATHER_MAP_TOKEN)
-    //     .done(function (resp) {
-    //         console.log(resp);
-    //         var today = resp.daily[0];
-    //         var todayDate = new Date(today.dt * 1000);
-    //         console.log(todayDate);
-    //     });
-
-    // $.get("http://api.openweathermap.org/data/2.5/weather", {
-    //     APPID: WEATHER_MAP_TOKEN,
-    //     q:     "San Antonio, US",
-    //     units: "imperial"
-    // }).done(function(data) {
-    //     console.log(data);
-    // });
-
     mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
     var map = new mapboxgl.Map({
         container: 'map',
@@ -46,47 +29,36 @@
     map.setZoom(10)
     map.setCenter([-98.4936, 29.4241])
 
+    function dayWeather() {
+        $.get("https://api.openweathermap.org/data/2.5/onecall", {
+            APPID: WEATHER_MAP_TOKEN,
+            lat: 29.423017,
+            lon: -98.48527,
+            units: "imperial"
+        }).done(function (data) {
 
-    // $.get("https://api.openweathermap.org/data/2.5/onecall", {
-    //     APPID: WEATHER_MAP_TOKEN,
-    //     lat:    29.423017,
-    //     lon:   -98.48527,
-    //     units: "imperial"
-    // }).done(function(data) {
-    //     console.log('current weather', data);
-    // });
+            for (var i = 0; i < data.daily.length; i++) {
+                var today = data.daily[i];
+                var todayDate = new Date(today.dt * 1000);
+                var date = todayDate.toDateString();
+                console.log(date)
+                var htmlStr = "<div id='weather" + (i + 1) + "'>";
+                htmlStr += '<h3>' + date + '</h3>';
+                htmlStr += '<ul>'
+                htmlStr += '<li>' + data.daily[i].humidity + '</li>';
+                htmlStr += '<li>' + data.daily[i].temp.day + '°' + '</li>';
+                htmlStr += '<li>' + data.daily[i].pop + '</li>';
+                htmlStr += '<li>' + data.daily[i].weather[0].main + '</li>';
+                htmlStr += '</ul>';
+                htmlStr += '</div>';
+                $('#weather').append(htmlStr);
+            }
+        });
+    }
 
-   // °
+    dayWeather();
 
-        function dayWeather() {
-            $.get("https://api.openweathermap.org/data/2.5/onecall", {
-                APPID: WEATHER_MAP_TOKEN,
-                lat: 29.423017,
-                lon: -98.48527,
-                units: "imperial"
-            }).done(function (data) {
-                console.log('current weather', data);
-                // console.log(data.current.clouds)
-                // console.log(data.daily[0].clouds)
-                // for (var i = 0; i < data.daily.length; i++) {
-                //     var htmlStr = "<div id='weather" + (i + 1) + "'>";
-                //     htmlStr += '<p>' + data.daily[i].clouds + '</p>';
-                //     htmlStr += '<p>' + data.daily[i].temp.day + '</p>';
-                //     htmlStr += '<p>' + data.daily[i].feels_like.day + '</p>';
-                //     htmlStr += '<p>' + data.daily[i].wind_speed + '</p>';
-                //     htmlStr += '</div>';
-                //     $('#weather').append(htmlStr)
-                //
-                // }
-                // console.log(htmlStr);
-            });
-        }
-        dayWeather();
-    //
-    //             return html
-    //         }
-    //         dayWeather()
-    //     }
+
     // });
 
 
