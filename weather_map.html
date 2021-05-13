@@ -14,6 +14,7 @@
         }
 
         body {
+            font-family: 'Bangla MN', sans-serif;
             background: linear-gradient(90deg, #2e3338, #326af5, white, gold);
             background-size: 400%;
             animation: change 20s ease-in-out alternate infinite;
@@ -136,8 +137,8 @@
                 htmlStr += '<img class="card-img-top" alt="icons" src="http://openweathermap.org/img/wn/' + data.daily[i].weather[0].icon + '@2x.png\n\"> '
                 htmlStr += '<div class="card-body">'
                 htmlStr += '<h3 class="card-title">' + date + '</h3>';
-                htmlStr += '<div class="card-text">' + 'Highest: ' + Math.round(data.daily[i].temp.max) + '°' + '</div>';
-                htmlStr += '<div class="card-text">' + 'Lowest: ' + Math.round(data.daily[i].temp.min) + '°' + '</div>';
+                htmlStr += '<div class="hidden card-text hide">' + 'Highest: ' + Math.round(data.daily[i].temp.max) + '°' + '</div>';
+                htmlStr += '<div class="hidden card-text hide">' + 'Lowest: ' + Math.round(data.daily[i].temp.min) + '°' + '</div>';
                 htmlStr += '<hr>'
                 htmlStr += '<div class="hidden card-text hide">' + 'Wind Moving From: ' + windCardinalDirection(data.daily[i].wind_deg) + '</div>';
                 htmlStr += '<div class="hidden card-text hide">' + 'Wind Speed: ' + Math.round(data.daily[i].wind_speed) + 'mph' + '</div>'
@@ -150,6 +151,7 @@
                 $('#weather' + (i + 1) + '').click(function () {
                     $(this).children('div').first().children('.hidden').slideToggle(1000)
                 })
+
                 // $('#weather' + (i + 1) + '').click(function () {
                 //     $('.hidden').slideToggle(1000)
                 // })
@@ -247,6 +249,7 @@
             console.log(results);
         })
     }
+
 
 
 </script>
