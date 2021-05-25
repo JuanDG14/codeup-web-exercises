@@ -9,3 +9,6 @@ for (var i = 1; i <= 30; i++) {
         console.log(i)
     }
 }
+
+const return7 = () => 7;
+console.log(return7())
