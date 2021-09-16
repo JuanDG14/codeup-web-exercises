@@ -1,0 +1,60 @@
+.jumbotron {
+    background-image: url("../img/weather.gif");
+    background-position: center;
+    background-size: cover;
+}
+
+body {
+    font-family: 'Bangla MN', sans-serif;
+    background: linear-gradient(90deg, #2e3338, #326af5, white, gold);
+    background-size: 400%;
+    animation: change 20s ease-in-out alternate infinite;
+}
+
+@keyframes change {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+.card {
+    border-radius: 3em;
+    margin-bottom: 2em;
+    background: linear-gradient(90deg, #2e3338, #d7d4d4, #326af5);
+    background-size: 400%;
+    animation: change 20s ease-in-out alternate infinite;
+    color: gold;
+}
+
+#map {
+    border: #2e3338 solid .5em;
+    border-radius: 2em;
+}
+
+.form-inline {
+    width: 50%;
+    margin-bottom: 1em;
+}
+
+.card {
+    border: #2e3338 solid .3em;
+}
+
+.grow {
+    transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+    transform: scale(1.1);
+}
+
+.hide {
+    display: none;
+}
